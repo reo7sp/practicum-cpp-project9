@@ -21,9 +21,8 @@ struct RgbColors {
     inline static constexpr RgbColor BLACK = RgbColor{0, 0, 0};
 };
 
-[[nodiscard]] constexpr std::uint32_t CalculateIterationsForPoint(const Complex &c, std::uint32_t max_iterations,
-                                                                  double escape_radius) noexcept {
-
+[[nodiscard]] constexpr std::uint32_t
+CalculateIterationsForPoint(const Complex& c, std::uint32_t max_iterations, double escape_radius) noexcept {
     Complex z{0.0, 0.0};
     const double escape_radius_squared = escape_radius * escape_radius;
 
@@ -33,20 +32,21 @@ struct RgbColors {
         }
         z = z * z + c;
     }
+
     return max_iterations;
 }
 
-[[nodiscard]] constexpr Complex Pixel2DToComplex(std::uint32_t x, std::uint32_t y, const ViewPort &viewport,
-                                                 const std::uint32_t screen_width,
-                                                 const std::uint32_t screen_height) noexcept {
-
+[[nodiscard]] constexpr Complex Pixel2DToComplex(
+    std::uint32_t x, std::uint32_t y, const ViewPort& viewport, const std::uint32_t screen_width,
+    const std::uint32_t screen_height
+) noexcept {
     const double real = viewport.x_min + (static_cast<double>(x) / screen_width) * viewport.width();
     const double imag = viewport.y_min + (static_cast<double>(y) / screen_height) * viewport.height();
+
     return Complex{real, imag};
 }
 
 [[nodiscard]] constexpr RgbColor IterationsToColor(std::uint32_t iterations, std::uint32_t max_iterations) noexcept {
-
     // Точка принадлежит множеству Мандельброта
     if (iterations == max_iterations) {
         return RgbColors::BLACK;

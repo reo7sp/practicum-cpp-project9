@@ -12,3 +12,7 @@ TabWidth: 4
 UseTab: Never
 Cpp11BracedListStyle: true
 AlwaysBreakTemplateDeclarations: true
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlignAfterOpenBracket: BlockIndent
+AllowShortFunctionsOnASingleLine: None

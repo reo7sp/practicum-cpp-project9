@@ -30,8 +30,12 @@ struct ViewPort {
     double y_min{-2.0};
     double y_max{2.0};
 
-    [[nodiscard]] constexpr double width() const noexcept { return x_max - x_min; }
-    [[nodiscard]] constexpr double height() const noexcept { return y_max - y_min; }
+    [[nodiscard]] constexpr double width() const noexcept {
+        return x_max - x_min;
+    }
+    [[nodiscard]] constexpr double height() const noexcept {
+        return y_max - y_min;
+    }
 };
 
 struct AppState {
@@ -53,11 +57,17 @@ struct AppState {
 
 class FrameClock {
 public:
-    FrameClock() { Reset(); }
+    FrameClock() {
+        Reset();
+    }
 
-    void Reset() noexcept { frame_start_ = std::chrono::steady_clock::now(); }
+    void Reset() noexcept {
+        frame_start_ = std::chrono::steady_clock::now();
+    }
 
-    auto GetFrameTime() const noexcept { return std::chrono::steady_clock::now() - frame_start_; }
+    auto GetFrameTime() const noexcept {
+        return std::chrono::steady_clock::now() - frame_start_;
+    }
 
 private:
     std::chrono::time_point<std::chrono::steady_clock> frame_start_;
@@ -65,15 +75,21 @@ private:
 
 class AvrTimeCounter {
 public:
-    long GetAvr() const { return n_ > 0 ? total_ / n_ : 0; }
-    long Count() const { return n_; }
+    long GetAvr() const {
+        return n_ > 0 ? total_ / n_ : 0;
+    }
+    long Count() const {
+        return n_;
+    }
 
     void Reset() {
         total_ = 0;
         n_ = 0;
     }
 
-    void Start() { start_time_ = std::chrono::high_resolution_clock::now(); }
+    void Start() {
+        start_time_ = std::chrono::high_resolution_clock::now();
+    }
 
     long End() {
         auto end_time = std::chrono::high_resolution_clock::now();

@@ -15,6 +15,9 @@ endif()
 
 # Ищем необходимые библиотеки
 find_package(GTest REQUIRED)
+if(APPLE AND EXISTS "/opt/homebrew/opt/sfml@2/lib/cmake/SFML")
+    list(PREPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/sfml@2")
+endif()
 find_package(SFML COMPONENTS graphics window system REQUIRED)
 
 include(FetchContent)

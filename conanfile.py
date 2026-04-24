@@ -8,6 +8,9 @@ class SenderModelAppConan(ConanFile):
     name = "sender_model_app"
     version = "0.0.1"
     settings = "os", "compiler", "build_type", "arch"
+
+    def configure(self):
+        self.settings.compiler.cppstd = "23"
     
     def requirements(self):
         self.requires("gtest/1.13.0")
