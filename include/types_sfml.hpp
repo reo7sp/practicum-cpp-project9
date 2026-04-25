@@ -42,7 +42,7 @@ struct SfmlState {
 
     FrameClock frame_clock;
 
-    explicit SfmlState(const RenderSettings &s)
+    explicit SfmlState(const RenderSettings& s)
         : render_settings(s),
           window(sf::VideoMode{render_settings.width, render_settings.height}, "Mandelbrot Fractal"),
           fb(FrameBuffer::Make(render_settings.width, render_settings.height)) {
